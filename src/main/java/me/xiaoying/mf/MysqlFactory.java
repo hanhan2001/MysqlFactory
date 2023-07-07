@@ -22,6 +22,8 @@ public class MysqlFactory {
     private final Stack<Create> create = new Stack<>();
     private String group;
 
+    private SQL sql;
+
     /**
      * 构建 MysqlFactory
      *
@@ -37,6 +39,14 @@ public class MysqlFactory {
         this.database = database;
         this.user = user;
         this.pass = pass;
+    }
+
+    public static MysqlFactory createMysql(String host, int port, String database, String user, String pass){
+       return new MysqlFactory(host, port, database, user, pass);
+    }
+
+    public SQL newSQL(){
+       return new SQL();
     }
 
     /**
